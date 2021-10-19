@@ -9,7 +9,8 @@
         body{
             background-image: url('https://images.unsplash.com/photo-1559579313-021b6ec9f6d6?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8c3RhZGl1bXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80');
             background-repeat: no-repeat;
-            background-size: contain;
+            background-attachment: fixed;
+            background-size: 100% 100%;
         }
 
         .teams{
@@ -30,8 +31,9 @@
         .card{
             margin: 10px;
             width: 20rem;
-            background-color: antiquewhite;
+            background-color: rgba(255,255,255,0.8);
             text-align: center;
+            color: black;
         }
     </style>
 </head>
@@ -67,18 +69,28 @@
                         <h4><%= mat.away.code %></h4>
                     </div>
                 </div>
+
                 <% let ans; %>
-                <% let d1 = new Date(mat.date); %>
-                <% let diffTime = (d1 - currDate); %>
-                <% let hour = parseInt(diffTime/(60 * 60 * 1000)); %>
-                <% let min = parseInt(diffTime/(60 * 1000)) - (hour * 60); %>
-                <% let sec = parseInt(diffTime/(1000)) - (min * 60) - (hour * 3600); %>
-                <% if(diffTime <= 0) {%>
-                    <% ans = "Match has already started" %>
-                <% } else { %>
-                    <% ans = hour.toString() + " h " + min.toString() + " m " + sec.toString() + " s " %>
-                <% } %>
-                <p><%= ans %></p>
+                <% let myVar = setInterval(myTimer, 1000); %>
+                <% function myTimer() { %>
+                    <% const date1 = new Date(); %>
+                    <% let d1 = new Date(mat.date); %>
+                    <% let diffTime = (d1 - date1); %>
+                    <% let hour = parseInt(diffTime/(60 * 60 * 1000)); %>
+                    <% let min = parseInt(diffTime/(60 * 1000)) - (hour * 60); %>
+                    <% let sec = parseInt(diffTime/(1000)) - (min * 60) - (hour * 3600); %>
+                    <% if(diffTime <= 0) {%>
+                        <% ans = "Match has already started" %>
+                        <% clearInterval(myVar); %>
+                    <% } else { %>
+                        <% ans = hour.toString() + " h " + min.toString() + " m " + sec.toString() + " s " %>
+                    <% } %>
+                <%  } %>
+                    
+                    <% console.log(ans); %>
+                    <p class="match-status">
+                        <%= ans %>
+                    </p>
                 </div>
             </div>
         <% } %>

@@ -11,7 +11,9 @@
     "cric-live": "^1.0.19",
     "dotenv": "^10.0.0",
     "ejs": "^3.1.6",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "jQuery": "^1.7.4",
+    "jsdom": "^18.0.0"
   },
   "repository": {
     "type": "git",

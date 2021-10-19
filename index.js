@@ -1,24 +1,26 @@
 const express = require('express');
 const request = require('request');
 const PORT = 8000;
-const app = express();
+const app = express(); 
 require('dotenv').config();
+
+app.use(express.static('./assets'));
 
 app.set('view engine', 'ejs');
 app.set('views', './views');
 
-function pad2(n) {
+function pad2(n) { 
   return (n < 10 ? '0' : '') + n;
 }
 
 let obj = {
   "results" : []
 };
-var date = new Date();
+var date = new Date(); 
 const date1 = new Date();
 var month = pad2(date.getMonth()+1);//months (0-11)
 var day = pad2(date.getDate());//day (1-31)
-var year= date.getFullYear();
+var year= date.getFullYear(); 
 var formattedDate =  year+"-"+month+"-"+day;
 for (let i = 0; i < 5; i++) {
   console.log(formattedDate);
@@ -29,13 +31,12 @@ for (let i = 0; i < 5; i++) {
       'x-rapidapi-host': 'cricket-live-data.p.rapidapi.com',
       'x-rapidapi-key': process.env.API_KEY,
       useQueryString: true 
-    } 
+    }  
   };
 
   request(options, function (error, response, body) {
     if (error) throw new Error(error);
     let s = JSON.parse(body);
-    console.log(s); 
     for(mat of s.results){
       obj.results.push(mat);
     }
@@ -49,7 +50,7 @@ for (let i = 0; i < 5; i++) {
 
 app.get('/',function(req,res){
   return res.render('card', {
-    title: 'Home Page',
+    title: 'Home Page', 
     matches: obj,
     currDate: date1
   })

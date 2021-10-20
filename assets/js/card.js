@@ -14,7 +14,14 @@ for(let i = 0; i < x.length; i++){
             ans = "Match has already started";
             clearInterval(myVar);
         } else {
-            ans = hour.toString() + " h " + min.toString() + " m " + sec.toString() + " s ";
+            if(hour == 0){
+                ans = min.toString() + " m " + sec.toString() + " s ";
+                if(min == 0){
+                    ans = sec.toString() + " s ";
+                }
+            }else{
+                ans = hour.toString() + " h " + min.toString() + " m " + sec.toString() + " s ";
+            }
         }
         x[i].innerHTML = ans;
     }, 1000);

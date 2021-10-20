@@ -77,7 +77,14 @@
                     <% if(diffTime <= 0) {%>
                         <% ans = "Match has already started" %>
                     <% } else { %>
-                        <% ans = hour.toString() + " h " + min.toString() + " m " + sec.toString() + " s " %>
+                        <% if(hour == 0){ %>
+                            <% ans = min.toString() + " m " + sec.toString() + " s "; %>
+                            <% if(min == 0){ %>
+                                <% ans = sec.toString() + " s "; %>
+                            <% } %>
+                        <%} else{ %>
+                            <% ans = hour.toString() + " h " + min.toString() + " m " + sec.toString() + " s "; %>
+                        <% } %>
                     <% } %>
                     <p class="match-status" id="<%= mat.date %>">
                         <%= ans %>

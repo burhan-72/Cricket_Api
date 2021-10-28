@@ -56,6 +56,10 @@ app.get('/',function(req,res){
   })
 });
 
+app.get('/match/contest',function(req,res){
+  return res.end('THIS IS CONTEST PAGE');
+});
+
 app.listen(PORT,function(err){
   if(err){
     console.log('Error in running the server!!', err);

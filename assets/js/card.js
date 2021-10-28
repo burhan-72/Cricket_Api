@@ -6,7 +6,7 @@ for(let i = 0; i < x.length; i++){
         let d1 = x[i].getAttribute('id');
         let d2 = new Date(d1);
         let diffTime = (d2 - date1);
-        console.log(diffTime);
+        // console.log(diffTime);
         let hour = parseInt(diffTime/(60 * 60 * 1000));
         let min = parseInt(diffTime/(60 * 1000)) - (hour * 60);
         let sec = parseInt(diffTime/(1000)) - (min * 60) - (hour * 3600);
@@ -26,3 +26,11 @@ for(let i = 0; i < x.length; i++){
         x[i].innerHTML = ans;
     }, 1000);
 }
+
+var card = document.querySelectorAll('.card');
+for(let i = 0 ; i < card.length; i++){
+    card[i].addEventListener('click',function(){
+        window.location.href = "http://localhost:8000/match/contest";
+    });
+}
+

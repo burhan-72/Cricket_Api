@@ -37,6 +37,7 @@ for (let i = 0; i < 5; i++) {
   request(options, function (error, response, body) {
     if (error) throw new Error(error);
     let s = JSON.parse(body);
+    console.log(s);
     for(mat of s.results){
       obj.results.push(mat);
     }
@@ -76,6 +77,7 @@ app.get('/match/contest',function(req,res){
   request(options, function (error, response, body) {
     if (error) throw new Error(error);
     let s = JSON.parse(body);
+    console.log(s);
     matchDet.results.push(s.results);
     return res.render('contest_card', {
       title: 'Contests',

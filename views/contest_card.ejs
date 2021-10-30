@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title><%= title %></title>
+
+    <style>
+        body{
+            background-image: url('https://images.unsplash.com/photo-1559579313-021b6ec9f6d6?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8c3RhZGl1bXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <% let playerListHome = match_details.results[0].live_details.teamsheets.home %>
+    <% let playerListAway = match_details.results[0].live_details.teamsheets.away %>
+
+    <strong><%= homeTeamName %></strong>
+    <br>
+    <br>
+
+    <% for(let i = 0; i < playerListHome.length; i++){ %>
+        <% let playerDet = playerListHome[i]; %>
+        <p><%= playerDet.player_name %></p>
+    <% } %>
+
+    <br>
+    <br>
+
+    <strong><%= awayTeamName %></strong>
+    <br>
+    <br>
+
+    <% for(let i = 0; i < playerListAway.length; i++){ %>
+        <% let playerDet = playerListAway[i]; %>
+        <p><%= playerDet.player_name %></p>
+    <% } %>
+</body>
+</html>

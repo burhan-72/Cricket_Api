@@ -29,8 +29,11 @@ for(let i = 0; i < x.length; i++){
 
 var card = document.querySelectorAll('.card');
 for(let i = 0 ; i < card.length; i++){
+    let match_id = card[i].getAttribute('id');
+    let homeName = card[i].getAttribute('data-home-name');
+    let awayName = card[i].getAttribute('data-away-name');
     card[i].addEventListener('click',function(){
-        window.location.href = "http://localhost:8000/match/contest";
+        window.location.href = `http://localhost:8000/match/contest?id=${match_id}&homeTeamName=${homeName}&awayTeamName=${awayName}`;
     });
 }
 

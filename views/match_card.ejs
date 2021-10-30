@@ -54,7 +54,7 @@
             <% if(mat.home.code == "" || mat.away.code == "") {%>
                 <% continue; %>
             <% } %>
-            <div class="card">
+            <div class="card" id="<%= mat.id %>" data-home-name="<%= mat.home.name %>" data-away-name="<%= mat.away.name %>">
                 <div class="card-body">
                 <p class="card-title"><%= mat.match_title %></p>
                 <div class="teams">

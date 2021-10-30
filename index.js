@@ -49,7 +49,7 @@ for (let i = 0; i < 5; i++) {
 }
 
 app.get('/',function(req,res){
-  return res.render('card', {
+  return res.render('match_card', {
     title: 'Home Page', 
     matches: obj,
     currDate: date1
@@ -57,7 +57,33 @@ app.get('/',function(req,res){
 });
 
 app.get('/match/contest',function(req,res){
-  return res.end('THIS IS CONTEST PAGE');
+  const match_id = req.query.id;
+  const homeTeamName = req.query.homeTeamName;
+  const awayTeamName = req.query.awayTeamName;
+  const options = {
+    method: 'GET',
+    url: `https://cricket-live-data.p.rapidapi.com/match/${match_id}`,
+    headers: {
+      'x-rapidapi-host': 'cricket-live-data.p.rapidapi.com',
+      'x-rapidapi-key': process.env.API_KEY,
+      useQueryString: true
+    }
+  };
+  let matchDet = {
+    "results": []
+  };
+  let s;
+  request(options, function (error, response, body) {
+    if (error) throw new Error(error);
+    let s = JSON.parse(body);
+    matchDet.results.push(s.results);
+    return res.render('contest_card', {
+      title: 'Contests',
+      match_details: matchDet,
+      homeTeamName: homeTeamName,
+      awayTeamName: awayTeamName
+    })
+  });
 });
 
 app.listen(PORT,function(err){

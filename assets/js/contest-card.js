@@ -1,11 +1,9 @@
 const createBtn=document.getElementById('create-team-button');
 createBtn.addEventListener('click',function(){
     const div=document.getElementById('select-players');
-    if(div.style.display==="none"){
-        div.style.display="block";
-    }else{
-        div.style.display="none";
-    }
+    const body=document.getElementsByClassName('container');
+    body.style.opacity = "0.5";
+    div.style.display="block";
 });
 
 const addPlayer = document.querySelectorAll('.player-add-icon');

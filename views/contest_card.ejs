@@ -119,6 +119,36 @@
             font-size: 20px;
             width: 20%;
         }
+        .select-player-footer{
+            display: flex;
+            justify-content: space-around;
+            margin: 2%;
+        }
+        #select-player-save{
+            width: 45%;
+            background-color: black;
+            color: white;
+            padding: 2%;
+            margin: 2%;
+            border: solid 1px white;
+            border-radius: 10px;
+
+        }
+        #select-player-cancel{
+            width: 45%;
+            background-color: black;
+            color: white;
+            padding: 2%;
+            margin: 2%;
+            border: solid 1px white;
+            border-radius: 10px;
+        }
+        #select-player-save:hover{
+            background-color: #00b137;
+        }
+        #select-player-cancel:hover{
+            background-color: red;
+        }
 
 
     </style>
@@ -223,6 +253,10 @@
                 <div><i class="fas fa-plus-circle player-add-icon" data-player-info="<%= playerDet.player_name %>"></i></div>
             </div>
         <% } %>
+        <div class="select-player-footer">
+            <button id="select-player-save">SAVE</button>
+            <button id="select-player-cancel">CANCEL</button>
+        </div>
     </div>
     <script src="/js/contest-card.js"></script>
 </body>

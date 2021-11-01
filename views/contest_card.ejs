@@ -84,8 +84,7 @@
             border: solid 2px white;
             border-radius: 5px;
         }
-        .select-players{
-            background-color: black;
+        #select-players{
             height: 70%;
             width: 50%;
             position: fixed;
@@ -94,8 +93,9 @@
             left: 25%;
             background-attachment: fixed;
             overflow-y: auto;
+            background-color: black;
         }
-        .select-players::-webkit-scrollbar {
+        #select-players::-webkit-scrollbar {
             display: none;
         }
 
@@ -169,7 +169,7 @@
         <button id="create-team-button">CREATE TEAM</button>
     </div>
 
-    <div class="select-players">
+    <div id="select-players">
         <% let playerListHome = match_details.results[0].live_details.teamsheets.home %>
         <% let playerListAway = match_details.results[0].live_details.teamsheets.away %>
     

@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <title><%= title %></title>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    </head>
     <style>
         *{
             padding: 0;
@@ -44,10 +45,6 @@
             display: flex;
             justify-content: space-between;
         }
-        .player_name{
-            color: white;
-            text-align: center;
-        }
         .team-name{
             color: white;
             font-size: 2rem;
@@ -85,19 +82,44 @@
             border-radius: 5px;
         }
         #select-players{
+            display: none;
             height: 70%;
             width: 50%;
             position: fixed;
-            visibility: hidden;
             top: 15%;
             left: 25%;
             background-attachment: fixed;
             overflow-y: auto;
             background-color: black;
+            border-radius: 10px;
         }
         #select-players::-webkit-scrollbar {
             display: none;
         }
+
+        .player-block{
+            color: white;
+            display: flex;
+            justify-content: space-around;
+            border: 1px solid white;
+            border-radius: 20px;
+            padding: 2%;
+            margin: 2%;
+        }
+
+        .player_name{
+            width: 40%;
+        }
+
+        .player_position{
+            width: 40%;
+        }
+
+        .player-add-icon{
+            font-size: 20px;
+            width: 20%;
+        }
+
 
     </style>
 </head>
@@ -179,8 +201,11 @@
     
         <% for(let i = 0; i < playerListHome.length; i++){ %>
             <% let playerDet = playerListHome[i]; %>
-            <p class="player_name"><%= playerDet.player_name %></p>
-            <p class="player_name"><%= playerDet.position %></p>
+            <div class="player-block">
+                <div class="player_name"><%= playerDet.player_name %></div>
+                <div class="player_position"><%= playerDet.position %></div>
+                <div><i class="fas fa-plus-circle player-add-icon"  data-player-info="<%= playerDet.player_name %>"></i></div>
+            </div>
             <% } %>
             
         <br>
@@ -192,8 +217,11 @@
         
         <% for(let i = 0; i < playerListAway.length; i++){ %>
             <% let playerDet = playerListAway[i]; %>
-            <p class="player_name"><%= playerDet.player_name %></p>
-            <p class="player_name"><%= playerDet.position %></p>
+            <div class="player-block">
+                <div class="player_name"><%= playerDet.player_name %></div>
+                <div class="player_position"><%= playerDet.position %></div>
+                <div><i class="fas fa-plus-circle player-add-icon" data-player-info="<%= playerDet.player_name %>"></i></div>
+            </div>
         <% } %>
     </div>
     <script src="/js/contest-card.js"></script>

@@ -1,8 +1,8 @@
 const createBtn=document.getElementById('create-team-button');
 createBtn.addEventListener('click',function(){
-    const div=document.getElementById('select-players');
-    const body=document.getElementsByClassName('container');
-    body.style.opacity = "0.5";
+    const div=document.getElementById('select-players-parent');
+    const backgrnd=document.getElementById('container');
+    backgrnd.style.opacity = "0.5";
     div.style.display="block";
 });
 
@@ -32,3 +32,33 @@ for(let i = 0; i < addPlayer.length; i++){
         console.log(addedPlayers);
     });
 }
+
+const saveButton = document.getElementById('select-player-save');
+saveButton.addEventListener('click',function(){
+    console.log('Save button clicked');
+    if(addedPlayers.length==11){
+        alert('Taam saved successfully!!');
+        const div=document.getElementById('select-players-parent');
+        div.style.display="none";
+        const backgrnd=document.getElementById('container');
+        backgrnd.style.opacity = "1";
+        return;
+    }else{
+        alert('Please select 11 players to create a team!!');
+        return;
+    }
+});
+
+const cancelButton = document.getElementById('select-player-cancel');
+cancelButton.addEventListener('click',function(){
+    console.log('Cancel button clicked');
+    const playersDivs = document.getElementsByClassName('player-block');
+    for(let i=0;i<playersDivs.length;i++){
+        playersDivs[i].style.backgroundColor="black";
+    }
+    const backgrnd=document.getElementById('container');
+    backgrnd.style.opacity = "1";
+    const div=document.getElementById('select-players-parent');
+    div.style.display="none";
+    addedPlayers = [];
+});
